@@ -12,7 +12,7 @@ const Index = () => {
     {
       id: "builder" as const,
       label: "Builder",
-      src: "http://localhost:8080",
+      src: "http://localhost:8080/",
       description: "Development Builder Interface"
     },
     {
