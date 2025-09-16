@@ -12,13 +12,13 @@ const Index = () => {
     {
       id: "builder" as const,
       label: "Builder",
-      src: "http://localhost:3000",
+      src: "http://localhost:8080",
       description: "Development Builder Interface"
     },
     {
       id: "automation" as const,
       label: "Automation Tool",
-      src: "http://localhost:3001",
+      src: "http://localhost:3000",
       description: "Automation & Workflow Management"
     }
   ];
