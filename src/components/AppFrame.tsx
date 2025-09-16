@@ -11,8 +11,8 @@ export const AppFrame = ({ src, title, isActive, className }: AppFrameProps) => 
   return (
     <div
       className={cn(
-        "w-full h-full transition-all duration-500 ease-in-out",
-        isActive ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none",
+        "w-full h-full transition-opacity duration-300 ease-in-out",
+        isActive ? "opacity-100" : "opacity-0 pointer-events-none",
         "absolute inset-0",
         className
       )}

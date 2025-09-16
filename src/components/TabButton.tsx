@@ -12,19 +12,16 @@ export const TabButton = ({ isActive, onClick, children, className }: TabButtonP
     <button
       onClick={onClick}
       className={cn(
-        "px-6 py-3 rounded-lg font-medium transition-all duration-300 relative",
-        "border border-border hover:border-primary/50",
-        "hover:bg-nav-hover hover:shadow-lg",
+        "px-6 py-3 font-medium transition-all duration-200 relative",
+        "border-b-2 border-transparent",
+        "hover:text-primary hover:border-primary/30",
         isActive
-          ? "bg-gradient-primary text-primary-foreground border-primary shadow-glow"
-          : "bg-card text-card-foreground hover:text-foreground",
+          ? "text-primary border-primary bg-primary/5"
+          : "text-muted-foreground hover:text-foreground",
         className
       )}
     >
       {children}
-      {isActive && (
-        <div className="absolute inset-0 rounded-lg bg-gradient-primary opacity-20 animate-glow" />
-      )}
     </button>
   );
 };

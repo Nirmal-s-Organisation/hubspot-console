@@ -28,29 +28,23 @@ const Index = () => {
       <Header />
       
       {/* Tab Navigation */}
-      <div className="border-b border-border bg-card/50 backdrop-blur-sm">
-        <div className="px-6 py-4">
-          <div className="flex gap-4 items-center">
+      <div className="border-b border-border bg-background/80 backdrop-blur-sm">
+        <div className="px-6">
+          <div className="flex items-end">
             {tabs.map((tab) => (
               <TabButton
                 key={tab.id}
                 isActive={activeTab === tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className="animate-fade-in"
               >
-                <div className="flex items-center gap-2">
-                  <span>{tab.label}</span>
-                  {activeTab === tab.id && (
-                    <div className="w-2 h-2 rounded-full bg-primary-foreground animate-pulse" />
-                  )}
-                </div>
+                {tab.label}
               </TabButton>
             ))}
           </div>
           
           {/* Active tab description */}
-          <div className="mt-3 animate-slide-in">
-            <p className="text-sm text-muted-foreground">
+          <div className="pb-4 pt-2">
+            <p className="text-sm text-muted-foreground transition-all duration-200">
               {tabs.find(tab => tab.id === activeTab)?.description}
             </p>
           </div>
