@@ -18,7 +18,7 @@ const Index = () => {
     {
       id: "automation" as const,
       label: "Automation Tool",
-      src: "http://localhost:3000",
+      src: "http://localhost:3001",
       description: "Automation & Workflow Management"
     }
   ];
