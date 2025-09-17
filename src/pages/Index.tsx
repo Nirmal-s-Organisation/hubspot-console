@@ -30,7 +30,7 @@ const Index = () => {
       <header className="shrink-0 bg-zinc-900/90 backdrop-blur-md border-b border-zinc-800 px-6 py-4 shadow-md relative z-10">
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-3">
-            <img src={logo} alt="NuAgentOne" className="h-9 object-contain" />
+            <img src={logo} alt="NuAgentOne" className="h-12 object-contain" />
             {/* <div>
               <h1 className="text-lg font-semibold">Development Hub</h1>
               <p className="text-sm text-zinc-400">Builder & Automation Tools</p>
