@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Header } from "@/components/Header";
-import { TabButton } from "@/components/TabButton";
 import { AppFrame } from "@/components/AppFrame";
+import logo from "@/assets/logo.png";
 
 type ActiveTab = "builder" | "automation";
 
@@ -11,67 +10,71 @@ const Index = () => {
   const tabs = [
     {
       id: "builder" as const,
-      label: "Builder",
+      label: "NuAgentOne Builder",
       src: "http://localhost:8080/",
-      description: "Development Builder Interface"
+      description: "Development Builder Interface",
     },
     {
       id: "automation" as const,
-      label: "Automation Tool",
-      src: "http://localhost:3001",
-      description: "Automation & Workflow Management"
-    }
+      label: "NuAgentOne Automation Tool",
+      src: "http://localhost:3000",
+      description: "Automation & Workflow Management",
+    },
   ];
 
+  const activeTabData = tabs.find((tab) => tab.id === activeTab);
+
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      
-      {/* Tab Navigation */}
-      <div className="border-b border-border bg-background/80 backdrop-blur-sm">
-        <div className="px-6">
-          <div className="flex items-end">
+    <div className="min-h-screen bg-black text-zinc-200 font-sans flex flex-col">
+      {/* Fixed Header */}
+      <header className="shrink-0 bg-zinc-900/90 backdrop-blur-md border-b border-zinc-800 px-6 py-4 shadow-md relative z-10">
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3">
+            <img src={logo} alt="NuAgentOne" className="h-9 object-contain" />
+            {/* <div>
+              <h1 className="text-lg font-semibold">Development Hub</h1>
+              <p className="text-sm text-zinc-400">Builder & Automation Tools</p>
+            </div> */}
+          </div>
+
+          {/* Tabs */}
+          <nav className="flex items-center gap-1 ml-6">
             {tabs.map((tab) => (
-              <TabButton
+              <button
                 key={tab.id}
-                isActive={activeTab === tab.id}
                 onClick={() => setActiveTab(tab.id)}
+                className={`relative px-4 py-2 text-sm font-medium transition-colors
+                  ${
+                    activeTab === tab.id
+                      ? "text-white"
+                      : "text-zinc-400 hover:text-zinc-200"
+                  }`}
               >
                 {tab.label}
-              </TabButton>
+                {activeTab === tab.id && (
+                  <span className="absolute left-0 right-0 -bottom-1 h-[2px] bg-primary rounded-full transition-all duration-300" />
+                )}
+              </button>
             ))}
-          </div>
-          
-          {/* Active tab description */}
-          <div className="pb-4 pt-2">
-            <p className="text-sm text-muted-foreground transition-all duration-200">
-              {tabs.find(tab => tab.id === activeTab)?.description}
-            </p>
-          </div>
+          </nav>
         </div>
-      </div>
 
-      {/* App Content Area */}
-      <div className="relative flex-1 p-6" style={{ height: "calc(100vh - 180px)" }}>
-        <div className="relative w-full h-full rounded-xl overflow-hidden border border-border shadow-2xl">
-          {tabs.map((tab) => (
-            <AppFrame
-              key={tab.id}
-              src={tab.src}
-              title={tab.label}
-              isActive={activeTab === tab.id}
-            />
-          ))}
-          
-          {/* Loading overlay */}
-          <div className="absolute inset-0 bg-muted/20 backdrop-blur-sm flex items-center justify-center pointer-events-none opacity-0 transition-opacity duration-300">
-            <div className="flex items-center gap-3 text-muted-foreground">
-              <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-              <span>Loading application...</span>
-            </div>
-          </div>
-        </div>
-      </div>
+        {/* <div className="mt-2">
+          <p className="text-sm text-zinc-400">{activeTabData?.description}</p>
+        </div> */}
+      </header>
+
+      {/* Main Content takes remaining space */}
+      <main className="flex-1 relative">
+        {tabs.map((tab) => (
+          <AppFrame
+            key={tab.id}
+            src={tab.src}
+            title={tab.label}
+            isActive={activeTab === tab.id}
+          />
+        ))}
+      </main>
     </div>
   );
 };

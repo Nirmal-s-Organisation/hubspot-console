@@ -1,6 +1,7 @@
 import logo from "@/assets/logo.png";
 
 export const Header = () => {
+  
   return (
     <header className="bg-card/80 backdrop-blur-lg border-b border-border px-6 py-4">
       <div className="flex items-center gap-4">
